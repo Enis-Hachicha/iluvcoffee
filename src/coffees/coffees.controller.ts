@@ -6,13 +6,16 @@ import {
   Body,
   HttpCode,
   HttpStatus,
+  Res,
+  Patch,
+  Delete,
 } from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
-  @Get('flavors')
-  findAll(@Res() response) {
-    response.status(200).send('this should return all coffees');
+  @Get()
+  findAll() {
+    return 'this should return all coffees';
   }
 
   @Get(':id')
@@ -21,8 +24,17 @@ export class CoffeesController {
   }
 
   @Post()
-  @HttpCode(HttpStatus.GONE)
   create(@Body() body) {
     return body;
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: String, @Body() body) {
+    return `this should update the #${id} coffee`;
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: String, @Body() body) {
+    return `this should delete the #${id} coffee`;
   }
 }
