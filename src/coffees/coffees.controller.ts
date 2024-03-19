@@ -24,7 +24,7 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: String) {
+  findOne(@Param('id') id: string) {
     return this.coffeeService.findOne(id);
   }
 
@@ -34,12 +34,12 @@ export class CoffeesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: String, @Body() body) {
+  update(@Param('id') id: string, @Body() body) {
     return this.coffeeService.update(id, body);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: String) {
+  remove(@Param('id') id: string) {
     return this.coffeeService.remove(id);
   }
 }
